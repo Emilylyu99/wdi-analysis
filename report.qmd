@@ -1,0 +1,292 @@
+---
+title: "World Development Indicators Analysis Report 2022"
+author: "Yang Lyu"
+date: "2026-02-23"
+format:
+  html:
+    toc: true
+    code-fold: true
+  pdf:
+    toc: true
+    number-sections: true
+    documentclass: article
+    pdf-engine: xelatex
+bibliography: references.bib
+---
+
+## Task2: Data Loading and Initial Exploration
+```{python}
+#| label: load-data
+#| echo: true
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import numpy as np
+
+df = pd.read_csv('wdi.csv')
+print(f"Dataset shape: {df.shape}")
+print(df.head())
+```
+
+## Introduction
+This report analyzes three key indicators from the World Development Indicators dataset for the year 2022 [@worldbank2023]: GDP per capita, primary school enrolment rate, and unemployment rate. These indicators capture important dimensions of economic performance, education access, and labor market conditions across countries.
+
+Extensive cross-country research has emphasized the role of human capital in economic development. Barro [@barro1991] highlights the importance of education and human capital in explaining differences in economic growth across nations. Similarly, Psacharopoulos and Patrinos [@psacharopoulos2004] document consistently high returns to education across countries, underscoring its long-term economic significance. At the same time, studies such as Blanchard and Wolfers [@blanchard2000] examine the macroeconomic and institutional determinants of unemployment, illustrating how labor market outcomes vary across economic contexts.
+
+Motivated by this literature, this report conducts an exploratory data analysis (EDA) to examine how economic output, education access, and unemployment patterns interact across countries in 2022.
+
+
+## Data Overview
+The dataset contains various indicators for multiple countries.
+
+```{python}
+#| label: tbl-summary
+#| tbl-cap: "Summary Statistics for Selected Indicators"
+
+# Select the three indicators
+selected_indicators = ['gdp_per_capita', 'primary_school_enrolment_rate', 'unemployment_rate']
+summary_stats = df[selected_indicators].describe().round(2)
+summary_stats
+```
+
+## Conduct EDA on three indicators
+### Analysis of GDP per Capita
+GDP per capita is a measure of a country's economic output per person.
+As shown in @fig-gdp-dist, the distribution of GDP per capita is highly right-skewed, with most countries below $20,000 and a small number of very high-income economies.
+
+```{python}
+#| label: fig-gdp-dist
+#| fig-cap: "Distribution of GDP per Capita Across Countries (2022)"
+#| echo: true
+
+fig, ax = plt.subplots(figsize=(10, 6))
+df_clean = df.dropna(subset=['gdp_per_capita'])
+ax.hist(df_clean['gdp_per_capita'], bins=30, edgecolor='black', alpha=0.7)
+ax.set_xlabel('GDP per Capita (USD)')
+ax.set_ylabel('Number of Countries')
+ax.set_title('Distribution of GDP per Capita')
+plt.tight_layout()
+plt.show()
+```
+
+### Findings: GDP per Capita
+
+The distribution of GDP per capita across countries is highly right-skewed. Most countries cluster at relatively low income levels, while a small number of countries have extremely high GDP per capita values.
+
+This indicates substantial global income inequality. The majority of countries have GDP per capita below $30,000, whereas only a few countries exceed $100,000. The long right tail suggests the presence of outliers — typically high-income economies with strong financial or resource-based sectors.
+
+Overall, the distribution highlights the uneven economic development across countries in 2022.
+
+### Analysis of Primary School Enrollment Rate
+Primary school enrolment rates indicate access to basic education.
+As illustrated in @fig-enrolment-bar, the top 10 countries exhibit very high enrolment rates, with some exceeding 100%, which may reflect gross enrolment measures.
+
+```{python}
+#| label: fig-enrolment-bar
+#| fig-cap: "Top 10 Countries by Primary School Enrolment Rate (2022)"
+#| echo: true
+
+# Get top 10 countries by enrolment rate
+top_enrolment = df.nlargest(10, 'primary_school_enrolment_rate')[['country', 'primary_school_enrolment_rate']].dropna()
+
+fig, ax = plt.subplots(figsize=(12, 6))
+bars = ax.bar(range(len(top_enrolment)), top_enrolment['primary_school_enrolment_rate'])
+ax.set_xticks(range(len(top_enrolment)))
+ax.set_xticklabels(top_enrolment['country'], rotation=45, ha='right')
+ax.set_xlabel('Country')
+ax.set_ylabel('Enrolment Rate (%)')
+ax.set_title('Top 10 Countries by Primary School Enrolment Rate')
+plt.tight_layout()
+plt.show()
+```
+
+### Findings: Primary School Enrolment Rate
+
+The bar chart shows the top 10 countries with the highest primary school enrolment rates. Several countries have enrolment rates exceeding 120%, which may reflect gross enrolment ratios that include over-age or under-age students.
+
+The differences among the top-performing countries are relatively small, suggesting that access to primary education is generally high among these nations. However, focusing only on the top 10 countries does not reflect disparities that may exist in lower-performing regions.
+
+Overall, the results suggest that while many countries have achieved strong primary school access, global education equality may still vary significantly outside the top performers.
+
+### Analysis of Unemployment Rate
+Unemployment rates vary significantly across countries.
+@tbl-unemployment-stats summarises key statistics, showing substantial dispersion and a moderate average unemployment rate globally.
+
+```{python}
+#| label: tbl-unemployment-stats
+#| tbl-cap: "Unemployment Rate Statistics"
+#| echo: true
+
+unemployment_stats = {
+    'Statistic': ['Mean', 'Median', 'Std Dev', 'Min', 'Max'],
+    'Value': [
+        df['unemployment_rate'].mean(),
+        df['unemployment_rate'].median(),
+        df['unemployment_rate'].std(),
+        df['unemployment_rate'].min(),
+        df['unemployment_rate'].max()
+    ]
+}
+unemployment_df = pd.DataFrame(unemployment_stats).round(2)
+unemployment_df
+```
+
+### Findings: Unemployment Rate
+
+The unemployment rate has a mean of 7.20% and a median of 5.34%, suggesting slight right-skewness. The wide range (0.13% to 36.47%) indicates significant variation across countries, with a few high-unemployment countries pulling the average upward.
+
+## Create at least two different types of plots
+### Relationship Between GDP per Capita and Unemployment
+As shown in @fig-gdp-unemployment, there is a slight negative relationship between GDP per capita and unemployment rate, suggesting that wealthier countries tend to have lower unemployment levels.
+
+```{python}
+#| label: fig-gdp-unemployment
+#| fig-cap: "Relationship Between GDP per Capita and Unemployment Rate (2022). Source: @worldbank2023."
+#| echo: false
+
+fig, ax = plt.subplots(figsize=(12, 8))
+df_clean = df.dropna(subset=['gdp_per_capita', 'unemployment_rate'])
+
+scatter = ax.scatter(df_clean['gdp_per_capita'], 
+                    df_clean['unemployment_rate'],
+                    alpha=0.6,
+                    c=df_clean['gdp_per_capita'],
+                    cmap='viridis')
+
+# Add trend line
+z = np.polyfit(df_clean['gdp_per_capita'], df_clean['unemployment_rate'], 1)
+p = np.poly1d(z)
+ax.plot(df_clean['gdp_per_capita'].sort_values(), 
+        p(df_clean['gdp_per_capita'].sort_values()), 
+        "r--", alpha=0.8, label='Trend line')
+
+ax.set_xlabel('GDP per Capita (USD)')
+ax.set_ylabel('Unemployment Rate (%)')
+ax.set_title('GDP per Capita vs Unemployment Rate')
+plt.colorbar(scatter, label='GDP per Capita (USD)')
+ax.legend()
+plt.tight_layout()
+plt.show()
+```
+
+### Findings: GDP per Capita and Unemployment
+
+The scatter plot shows a negative relationship between GDP per capita and unemployment rate. Countries with higher income levels tend to have lower unemployment rates on average. Although there is variation among low-income countries, the overall trend suggests that stronger economic performance is associated with more stable labor markets.
+
+### Average Unemployment Rate by GDP Level
+@fig-gdp-group-unemployment compares average unemployment rates across GDP per capita groups.
+
+```{python}
+#| label: fig-gdp-group-unemployment
+#| fig-cap: "Average Unemployment Rate by GDP per Capita Group (2022). Source: World Bank WDI 2022. Source: @worldbank2023."
+#| echo: false
+
+df_clean = df.dropna(subset=['gdp_per_capita', 'unemployment_rate'])
+
+# Create GDP quartiles
+df_clean['gdp_group'] = pd.qcut(
+    df_clean['gdp_per_capita'],
+    q=4,
+    labels=['Low GDP', 'Lower-Middle GDP', 'Upper-Middle GDP', 'High GDP']
+)
+
+avg_unemployment = df_clean.groupby('gdp_group')['unemployment_rate'].mean()
+
+fig, ax = plt.subplots(figsize=(8, 6))
+avg_unemployment.plot(kind='bar', ax=ax)
+
+ax.set_xlabel('GDP per Capita Group')
+ax.set_ylabel('Average Unemployment Rate (%)')
+ax.set_title('Average Unemployment Rate by GDP Level')
+
+plt.tight_layout()
+plt.show()
+```
+
+### Findings: Unemployment by GDP Group
+
+The bar chart shows differences in average unemployment across GDP groups. Lower-middle and upper-middle income countries exhibit higher average unemployment compared to high-income countries. This reinforces the negative association between economic development and unemployment observed in the scatter plot.
+
+### Relationship Between Education and Unemployment
+@fig-education-unemployment illustrates the relationship between education and unemployment.
+
+```{python}
+#| label: fig-education-unemployment
+#| fig-cap: "Primary School Enrolment vs Unemployment Rate (2022). Source: @worldbank2023"
+#| echo: false
+
+fig, ax = plt.subplots(figsize=(12, 8))
+df_clean = df.dropna(subset=['primary_school_enrolment_rate', 'unemployment_rate'])
+
+scatter = ax.scatter(df_clean['primary_school_enrolment_rate'], 
+                    df_clean['unemployment_rate'],
+                    alpha=0.6,
+                    c=df_clean['primary_school_enrolment_rate'],
+                    cmap='plasma')
+
+ax.set_xlabel('Primary School Enrolment Rate (%)')
+ax.set_ylabel('Unemployment Rate (%)')
+ax.set_title('Primary School Enrolment vs Unemployment Rate')
+plt.colorbar(scatter, label='Enrolment Rate (%)')
+plt.tight_layout()
+plt.show()
+```
+
+### Findings: Education and Unemployment
+
+The relationship between primary school enrolment and unemployment appears weak. Most countries cluster around enrolment rates near 100%, with varying unemployment levels. This suggests that primary education alone may not strongly explain differences in unemployment across countries.
+
+## Summary Table of Key Findings
+@tbl-key-findings presents selected economic and social indicators for major economies, allowing direct comparison across countries.
+
+```{python}
+#| label: tbl-key-findings
+#| tbl-cap: "Key Findings Summary"
+
+# Create a summary table for selected countries
+selected_countries = ['United States', 'China', 'Japan', 'Germany', 'United Kingdom', 
+                   'France', 'India', 'Brazil', 'Canada', 'Australia']
+summary_data = []
+
+for country in selected_countries:
+    country_data = df[df['country'] == country]
+    if not country_data.empty:
+        summary_data.append({
+            'Country': country,
+            'GDP per Capita': round(country_data['gdp_per_capita'].values[0], 2),
+            'Primary Enrolment': round(country_data['primary_school_enrolment_rate'].values[0], 2) if pd.notna(country_data['primary_school_enrolment_rate'].values[0]) else 'N/A',
+            'Unemployment': round(country_data['unemployment_rate'].values[0], 2) if pd.notna(country_data['unemployment_rate'].values[0]) else 'N/A'
+        })
+
+summary_df = pd.DataFrame(summary_data)
+summary_df
+```
+
+@tbl-analysis-summary synthesises the main analytical insights from the study, highlighting distributional patterns and relationships between economic output, education, and unemployment.
+
+```{python}
+#| label: tbl-analysis-summary
+#| tbl-cap: "Summary of Key Findings from the Analysis (2022). Source: @worldbank2023."
+#| echo: false
+
+summary_table = pd.DataFrame({
+    "Indicator": [
+        "GDP per Capita",
+        "Primary School Enrolment",
+        "Unemployment Rate",
+        "GDP vs Unemployment",
+        "Education vs Unemployment"
+    ],
+    "Key Finding": [
+        "Highly right-skewed distribution; large income inequality across countries.",
+        "Most countries cluster around high enrolment rates (near or above 100%).",
+        "Wide variation across countries; mean higher than median suggests slight right-skewness.",
+        "Negative relationship: higher GDP per capita associated with lower unemployment.",
+        "Weak relationship; enrolment rate does not strongly explain unemployment differences."
+    ]
+})
+
+summary_table
+```
+
+Task 6 is already done in the report.

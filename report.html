@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Yang Lyu">
+<meta name="dcterms.date" content="2026-02-23">
+
+<title>World Development Indicators Analysis Report 2022</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="report_files/libs/clipboard/clipboard.min.js"></script>
+<script src="report_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="report_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="report_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="report_files/libs/quarto-html/popper.min.js"></script>
+<script src="report_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="report_files/libs/quarto-html/anchor.min.js"></script>
+<link href="report_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="report_files/libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="report_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="report_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="report_files/libs/bootstrap/bootstrap-d6a003b94517c951b2d65075d42fb01b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+</head>
+
+<body class="quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#task2-data-loading-and-initial-exploration" id="toc-task2-data-loading-and-initial-exploration" class="nav-link active" data-scroll-target="#task2-data-loading-and-initial-exploration">Task2: Data Loading and Initial Exploration</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#data-overview" id="toc-data-overview" class="nav-link" data-scroll-target="#data-overview">Data Overview</a></li>
+  <li><a href="#conduct-eda-on-three-indicators" id="toc-conduct-eda-on-three-indicators" class="nav-link" data-scroll-target="#conduct-eda-on-three-indicators">Conduct EDA on three indicators</a>
+  <ul class="collapse">
+  <li><a href="#analysis-of-gdp-per-capita" id="toc-analysis-of-gdp-per-capita" class="nav-link" data-scroll-target="#analysis-of-gdp-per-capita">Analysis of GDP per Capita</a></li>
+  <li><a href="#findings-gdp-per-capita" id="toc-findings-gdp-per-capita" class="nav-link" data-scroll-target="#findings-gdp-per-capita">Findings: GDP per Capita</a></li>
+  <li><a href="#analysis-of-primary-school-enrollment-rate" id="toc-analysis-of-primary-school-enrollment-rate" class="nav-link" data-scroll-target="#analysis-of-primary-school-enrollment-rate">Analysis of Primary School Enrollment Rate</a></li>
+  <li><a href="#findings-primary-school-enrolment-rate" id="toc-findings-primary-school-enrolment-rate" class="nav-link" data-scroll-target="#findings-primary-school-enrolment-rate">Findings: Primary School Enrolment Rate</a></li>
+  <li><a href="#analysis-of-unemployment-rate" id="toc-analysis-of-unemployment-rate" class="nav-link" data-scroll-target="#analysis-of-unemployment-rate">Analysis of Unemployment Rate</a></li>
+  <li><a href="#findings-unemployment-rate" id="toc-findings-unemployment-rate" class="nav-link" data-scroll-target="#findings-unemployment-rate">Findings: Unemployment Rate</a></li>
+  </ul></li>
+  <li><a href="#create-at-least-two-different-types-of-plots" id="toc-create-at-least-two-different-types-of-plots" class="nav-link" data-scroll-target="#create-at-least-two-different-types-of-plots">Create at least two different types of plots</a>
+  <ul class="collapse">
+  <li><a href="#relationship-between-gdp-per-capita-and-unemployment" id="toc-relationship-between-gdp-per-capita-and-unemployment" class="nav-link" data-scroll-target="#relationship-between-gdp-per-capita-and-unemployment">Relationship Between GDP per Capita and Unemployment</a></li>
+  <li><a href="#findings-gdp-per-capita-and-unemployment" id="toc-findings-gdp-per-capita-and-unemployment" class="nav-link" data-scroll-target="#findings-gdp-per-capita-and-unemployment">Findings: GDP per Capita and Unemployment</a></li>
+  <li><a href="#average-unemployment-rate-by-gdp-level" id="toc-average-unemployment-rate-by-gdp-level" class="nav-link" data-scroll-target="#average-unemployment-rate-by-gdp-level">Average Unemployment Rate by GDP Level</a></li>
+  <li><a href="#findings-unemployment-by-gdp-group" id="toc-findings-unemployment-by-gdp-group" class="nav-link" data-scroll-target="#findings-unemployment-by-gdp-group">Findings: Unemployment by GDP Group</a></li>
+  <li><a href="#relationship-between-education-and-unemployment" id="toc-relationship-between-education-and-unemployment" class="nav-link" data-scroll-target="#relationship-between-education-and-unemployment">Relationship Between Education and Unemployment</a></li>
+  <li><a href="#findings-education-and-unemployment" id="toc-findings-education-and-unemployment" class="nav-link" data-scroll-target="#findings-education-and-unemployment">Findings: Education and Unemployment</a></li>
+  </ul></li>
+  <li><a href="#summary-table-of-key-findings" id="toc-summary-table-of-key-findings" class="nav-link" data-scroll-target="#summary-table-of-key-findings">Summary Table of Key Findings</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="report.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">World Development Indicators Analysis Report 2022</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Yang Lyu </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">February 23, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="task2-data-loading-and-initial-exploration" class="level2">
+<h2 class="anchored" data-anchor-id="task2-data-loading-and-initial-exploration">Task2: Data Loading and Initial Exploration</h2>
+<div id="load-data" class="cell" data-execution_count="1">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'wdi.csv'</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Dataset shape: </span><span class="sc">{</span>df<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.head())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Dataset shape: (217, 14)
+          country  inflation_rate  exports_gdp_share  gdp_growth_rate  \
+0     Afghanistan       13.712102          18.380042        -6.240172   
+1         Albania        6.725203          37.197076         4.826801   
+2         Algeria        9.265516          30.791556         3.600000   
+3  American Samoa             NaN          46.957520         1.735016   
+4         Andorra             NaN                NaN         9.564612   
+
+   gdp_per_capita  adult_literacy_rate  primary_school_enrolment_rate  \
+0      357.261153                  NaN                            NaN   
+1     7756.961887                  NaN                      96.371230   
+2     4960.303343                  NaN                     105.747154   
+3    18017.458938                  NaN                            NaN   
+4    42414.047986                  NaN                      90.465681   
+
+   education_expenditure_gdp_share  measles_immunisation_rate  \
+0                              NaN                       56.0   
+1                         2.729770                       86.0   
+2                         4.749247                       79.0   
+3                              NaN                        NaN   
+4                         2.647280                       98.0   
+
+   health_expenditure_gdp_share  income_inequality  unemployment_rate  \
+0                     23.088169                NaN             14.100   
+1                      7.536462                NaN             10.785   
+2                      3.634643                NaN             12.382   
+3                           NaN                NaN                NaN   
+4                      7.521358                NaN                NaN   
+
+   life_expectancy  total_population  
+0           65.617        40578842.0  
+1           78.769         2451636.0  
+2           76.129        45477389.0  
+3           72.752           48342.0  
+4           84.016           79705.0  </code></pre>
+</div>
+</div>
+</section>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>This report analyzes three key indicators from the World Development Indicators dataset for the year 2022 <span class="citation" data-cites="worldbank2023">(<a href="#ref-worldbank2023" role="doc-biblioref">The World Bank 2023</a>)</span>: GDP per capita, primary school enrolment rate, and unemployment rate. These indicators capture important dimensions of economic performance, education access, and labor market conditions across countries.</p>
+<p>Extensive cross-country research has emphasized the role of human capital in economic development. Barro <span class="citation" data-cites="barro1991">(<a href="#ref-barro1991" role="doc-biblioref">Barro 1991</a>)</span> highlights the importance of education and human capital in explaining differences in economic growth across nations. Similarly, Psacharopoulos and Patrinos <span class="citation" data-cites="psacharopoulos2004">(<a href="#ref-psacharopoulos2004" role="doc-biblioref">Psacharopoulos and Patrinos 2004</a>)</span> document consistently high returns to education across countries, underscoring its long-term economic significance. At the same time, studies such as Blanchard and Wolfers <span class="citation" data-cites="blanchard2000">(<a href="#ref-blanchard2000" role="doc-biblioref">Blanchard and Wolfers 2000</a>)</span> examine the macroeconomic and institutional determinants of unemployment, illustrating how labor market outcomes vary across economic contexts.</p>
+<p>Motivated by this literature, this report conducts an exploratory data analysis (EDA) to examine how economic output, education access, and unemployment patterns interact across countries in 2022.</p>
+</section>
+<section id="data-overview" class="level2">
+<h2 class="anchored" data-anchor-id="data-overview">Data Overview</h2>
+<p>The dataset contains various indicators for multiple countries.</p>
+<div class="cell" data-execution_count="2">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select the three indicators</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>selected_indicators <span class="op">=</span> [<span class="st">'gdp_per_capita'</span>, <span class="st">'primary_school_enrolment_rate'</span>, <span class="st">'unemployment_rate'</span>]</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>summary_stats <span class="op">=</span> df[selected_indicators].describe().<span class="bu">round</span>(<span class="dv">2</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>summary_stats</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div id="tbl-summary" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="2">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Summary Statistics for Selected Indicators
+</figcaption>
+<div aria-describedby="tbl-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-display" data-execution_count="12">
+<div>
+
+
+<table class="dataframe do-not-create-environment cell caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">gdp_per_capita</th>
+<th data-quarto-table-cell-role="th">primary_school_enrolment_rate</th>
+<th data-quarto-table-cell-role="th">unemployment_rate</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">count</th>
+<td>209.00</td>
+<td>162.00</td>
+<td>186.00</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">mean</th>
+<td>21142.75</td>
+<td>100.72</td>
+<td>7.20</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">std</th>
+<td>31040.30</td>
+<td>12.16</td>
+<td>5.85</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">min</th>
+<td>302.99</td>
+<td>66.25</td>
+<td>0.13</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">25%</th>
+<td>2899.16</td>
+<td>95.75</td>
+<td>3.48</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">50%</th>
+<td>7655.59</td>
+<td>100.23</td>
+<td>5.34</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">75%</th>
+<td>28360.30</td>
+<td>104.68</td>
+<td>9.19</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">max</th>
+<td>226052.00</td>
+<td>163.17</td>
+<td>36.47</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</figure>
+</div>
+</div>
+</section>
+<section id="conduct-eda-on-three-indicators" class="level2">
+<h2 class="anchored" data-anchor-id="conduct-eda-on-three-indicators">Conduct EDA on three indicators</h2>
+<section id="analysis-of-gdp-per-capita" class="level3">
+<h3 class="anchored" data-anchor-id="analysis-of-gdp-per-capita">Analysis of GDP per Capita</h3>
+<p>GDP per capita is a measure of a country’s economic output per person. As shown in <a href="#fig-gdp-dist" class="quarto-xref">Figure&nbsp;1</a>, the distribution of GDP per capita is highly right-skewed, with most countries below $20,000 and a small number of very high-income economies.</p>
+<div id="cell-fig-gdp-dist" class="cell" data-execution_count="3">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>df_clean <span class="op">=</span> df.dropna(subset<span class="op">=</span>[<span class="st">'gdp_per_capita'</span>])</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>ax.hist(df_clean[<span class="st">'gdp_per_capita'</span>], bins<span class="op">=</span><span class="dv">30</span>, edgecolor<span class="op">=</span><span class="st">'black'</span>, alpha<span class="op">=</span><span class="fl">0.7</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'GDP per Capita (USD)'</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'Number of Countries'</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'Distribution of GDP per Capita'</span>)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-gdp-dist" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-gdp-dist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="report_files/figure-html/fig-gdp-dist-output-1.png" width="950" height="566" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-gdp-dist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Distribution of GDP per Capita Across Countries (2022)
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="findings-gdp-per-capita" class="level3">
+<h3 class="anchored" data-anchor-id="findings-gdp-per-capita">Findings: GDP per Capita</h3>
+<p>The distribution of GDP per capita across countries is highly right-skewed. Most countries cluster at relatively low income levels, while a small number of countries have extremely high GDP per capita values.</p>
+<p>This indicates substantial global income inequality. The majority of countries have GDP per capita below $30,000, whereas only a few countries exceed $100,000. The long right tail suggests the presence of outliers — typically high-income economies with strong financial or resource-based sectors.</p>
+<p>Overall, the distribution highlights the uneven economic development across countries in 2022.</p>
+</section>
+<section id="analysis-of-primary-school-enrollment-rate" class="level3">
+<h3 class="anchored" data-anchor-id="analysis-of-primary-school-enrollment-rate">Analysis of Primary School Enrollment Rate</h3>
+<p>Primary school enrolment rates indicate access to basic education. As illustrated in <a href="#fig-enrolment-bar" class="quarto-xref">Figure&nbsp;2</a>, the top 10 countries exhibit very high enrolment rates, with some exceeding 100%, which may reflect gross enrolment measures.</p>
+<div id="cell-fig-enrolment-bar" class="cell" data-execution_count="4">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get top 10 countries by enrolment rate</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>top_enrolment <span class="op">=</span> df.nlargest(<span class="dv">10</span>, <span class="st">'primary_school_enrolment_rate'</span>)[[<span class="st">'country'</span>, <span class="st">'primary_school_enrolment_rate'</span>]].dropna()</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">6</span>))</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>bars <span class="op">=</span> ax.bar(<span class="bu">range</span>(<span class="bu">len</span>(top_enrolment)), top_enrolment[<span class="st">'primary_school_enrolment_rate'</span>])</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>ax.set_xticks(<span class="bu">range</span>(<span class="bu">len</span>(top_enrolment)))</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>ax.set_xticklabels(top_enrolment[<span class="st">'country'</span>], rotation<span class="op">=</span><span class="dv">45</span>, ha<span class="op">=</span><span class="st">'right'</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'Country'</span>)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'Enrolment Rate (%)'</span>)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'Top 10 Countries by Primary School Enrolment Rate'</span>)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-enrolment-bar" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-enrolment-bar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="report_files/figure-html/fig-enrolment-bar-output-1.png" width="1142" height="565" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-enrolment-bar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Top 10 Countries by Primary School Enrolment Rate (2022)
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="findings-primary-school-enrolment-rate" class="level3">
+<h3 class="anchored" data-anchor-id="findings-primary-school-enrolment-rate">Findings: Primary School Enrolment Rate</h3>
+<p>The bar chart shows the top 10 countries with the highest primary school enrolment rates. Several countries have enrolment rates exceeding 120%, which may reflect gross enrolment ratios that include over-age or under-age students.</p>
+<p>The differences among the top-performing countries are relatively small, suggesting that access to primary education is generally high among these nations. However, focusing only on the top 10 countries does not reflect disparities that may exist in lower-performing regions.</p>
+<p>Overall, the results suggest that while many countries have achieved strong primary school access, global education equality may still vary significantly outside the top performers.</p>
+</section>
+<section id="analysis-of-unemployment-rate" class="level3">
+<h3 class="anchored" data-anchor-id="analysis-of-unemployment-rate">Analysis of Unemployment Rate</h3>
+<p>Unemployment rates vary significantly across countries. <a href="#tbl-unemployment-stats" class="quarto-xref">Table&nbsp;2</a> summarises key statistics, showing substantial dispersion and a moderate average unemployment rate globally.</p>
+<div class="cell" data-execution_count="5">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>unemployment_stats <span class="op">=</span> {</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Statistic'</span>: [<span class="st">'Mean'</span>, <span class="st">'Median'</span>, <span class="st">'Std Dev'</span>, <span class="st">'Min'</span>, <span class="st">'Max'</span>],</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Value'</span>: [</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>        df[<span class="st">'unemployment_rate'</span>].mean(),</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>        df[<span class="st">'unemployment_rate'</span>].median(),</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        df[<span class="st">'unemployment_rate'</span>].std(),</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>        df[<span class="st">'unemployment_rate'</span>].<span class="bu">min</span>(),</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>        df[<span class="st">'unemployment_rate'</span>].<span class="bu">max</span>()</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    ]</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>unemployment_df <span class="op">=</span> pd.DataFrame(unemployment_stats).<span class="bu">round</span>(<span class="dv">2</span>)</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>unemployment_df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div id="tbl-unemployment-stats" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="5">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-unemployment-stats-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2: Unemployment Rate Statistics
+</figcaption>
+<div aria-describedby="tbl-unemployment-stats-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-display" data-execution_count="15">
+<div>
+
+
+<table class="dataframe do-not-create-environment cell caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Statistic</th>
+<th data-quarto-table-cell-role="th">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>Mean</td>
+<td>7.20</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>Median</td>
+<td>5.34</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>Std Dev</td>
+<td>5.85</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>Min</td>
+<td>0.13</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>Max</td>
+<td>36.47</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</figure>
+</div>
+</div>
+</section>
+<section id="findings-unemployment-rate" class="level3">
+<h3 class="anchored" data-anchor-id="findings-unemployment-rate">Findings: Unemployment Rate</h3>
+<p>The unemployment rate has a mean of 7.20% and a median of 5.34%, suggesting slight right-skewness. The wide range (0.13% to 36.47%) indicates significant variation across countries, with a few high-unemployment countries pulling the average upward.</p>
+</section>
+</section>
+<section id="create-at-least-two-different-types-of-plots" class="level2">
+<h2 class="anchored" data-anchor-id="create-at-least-two-different-types-of-plots">Create at least two different types of plots</h2>
+<section id="relationship-between-gdp-per-capita-and-unemployment" class="level3">
+<h3 class="anchored" data-anchor-id="relationship-between-gdp-per-capita-and-unemployment">Relationship Between GDP per Capita and Unemployment</h3>
+<p>As shown in <a href="#fig-gdp-unemployment" class="quarto-xref">Figure&nbsp;3</a>, there is a slight negative relationship between GDP per capita and unemployment rate, suggesting that wealthier countries tend to have lower unemployment levels.</p>
+<div id="cell-fig-gdp-unemployment" class="cell" data-execution_count="6">
+<div class="cell-output cell-output-display">
+<div id="fig-gdp-unemployment" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-gdp-unemployment-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="report_files/figure-html/fig-gdp-unemployment-output-1.png" width="1093" height="758" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-gdp-unemployment-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Relationship Between GDP per Capita and Unemployment Rate (2022). Source: <span class="citation" data-cites="worldbank2023">The World Bank (<a href="#ref-worldbank2023" role="doc-biblioref">2023</a>)</span>.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="findings-gdp-per-capita-and-unemployment" class="level3">
+<h3 class="anchored" data-anchor-id="findings-gdp-per-capita-and-unemployment">Findings: GDP per Capita and Unemployment</h3>
+<p>The scatter plot shows a negative relationship between GDP per capita and unemployment rate. Countries with higher income levels tend to have lower unemployment rates on average. Although there is variation among low-income countries, the overall trend suggests that stronger economic performance is associated with more stable labor markets.</p>
+</section>
+<section id="average-unemployment-rate-by-gdp-level" class="level3">
+<h3 class="anchored" data-anchor-id="average-unemployment-rate-by-gdp-level">Average Unemployment Rate by GDP Level</h3>
+<p><a href="#fig-gdp-group-unemployment" class="quarto-xref">Figure&nbsp;4</a> compares average unemployment rates across GDP per capita groups.</p>
+<div id="cell-fig-gdp-group-unemployment" class="cell" data-execution_count="7">
+<div class="cell-output cell-output-display">
+<div id="fig-gdp-group-unemployment" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-gdp-group-unemployment-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="report_files/figure-html/fig-gdp-group-unemployment-output-1.png" width="758" height="566" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-gdp-group-unemployment-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: Average Unemployment Rate by GDP per Capita Group (2022). Source: World Bank WDI 2022. Source: <span class="citation" data-cites="worldbank2023">The World Bank (<a href="#ref-worldbank2023" role="doc-biblioref">2023</a>)</span>.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="findings-unemployment-by-gdp-group" class="level3">
+<h3 class="anchored" data-anchor-id="findings-unemployment-by-gdp-group">Findings: Unemployment by GDP Group</h3>
+<p>The bar chart shows differences in average unemployment across GDP groups. Lower-middle and upper-middle income countries exhibit higher average unemployment compared to high-income countries. This reinforces the negative association between economic development and unemployment observed in the scatter plot.</p>
+</section>
+<section id="relationship-between-education-and-unemployment" class="level3">
+<h3 class="anchored" data-anchor-id="relationship-between-education-and-unemployment">Relationship Between Education and Unemployment</h3>
+<p><a href="#fig-education-unemployment" class="quarto-xref">Figure&nbsp;5</a> illustrates the relationship between education and unemployment.</p>
+<div id="cell-fig-education-unemployment" class="cell" data-execution_count="8">
+<div class="cell-output cell-output-display">
+<div id="fig-education-unemployment" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-education-unemployment-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="report_files/figure-html/fig-education-unemployment-output-1.png" width="1067" height="758" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-education-unemployment-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5: Primary School Enrolment vs Unemployment Rate (2022). Source: <span class="citation" data-cites="worldbank2023">The World Bank (<a href="#ref-worldbank2023" role="doc-biblioref">2023</a>)</span>
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="findings-education-and-unemployment" class="level3">
+<h3 class="anchored" data-anchor-id="findings-education-and-unemployment">Findings: Education and Unemployment</h3>
+<p>The relationship between primary school enrolment and unemployment appears weak. Most countries cluster around enrolment rates near 100%, with varying unemployment levels. This suggests that primary education alone may not strongly explain differences in unemployment across countries.</p>
+</section>
+</section>
+<section id="summary-table-of-key-findings" class="level2">
+<h2 class="anchored" data-anchor-id="summary-table-of-key-findings">Summary Table of Key Findings</h2>
+<p><a href="#tbl-key-findings" class="quarto-xref">Table&nbsp;3</a> presents selected economic and social indicators for major economies, allowing direct comparison across countries.</p>
+<div class="cell" data-execution_count="9">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a summary table for selected countries</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>selected_countries <span class="op">=</span> [<span class="st">'United States'</span>, <span class="st">'China'</span>, <span class="st">'Japan'</span>, <span class="st">'Germany'</span>, <span class="st">'United Kingdom'</span>, </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'France'</span>, <span class="st">'India'</span>, <span class="st">'Brazil'</span>, <span class="st">'Canada'</span>, <span class="st">'Australia'</span>]</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>summary_data <span class="op">=</span> []</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> country <span class="kw">in</span> selected_countries:</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    country_data <span class="op">=</span> df[df[<span class="st">'country'</span>] <span class="op">==</span> country]</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> country_data.empty:</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>        summary_data.append({</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>            <span class="st">'Country'</span>: country,</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>            <span class="st">'GDP per Capita'</span>: <span class="bu">round</span>(country_data[<span class="st">'gdp_per_capita'</span>].values[<span class="dv">0</span>], <span class="dv">2</span>),</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>            <span class="st">'Primary Enrolment'</span>: <span class="bu">round</span>(country_data[<span class="st">'primary_school_enrolment_rate'</span>].values[<span class="dv">0</span>], <span class="dv">2</span>) <span class="cf">if</span> pd.notna(country_data[<span class="st">'primary_school_enrolment_rate'</span>].values[<span class="dv">0</span>]) <span class="cf">else</span> <span class="st">'N/A'</span>,</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>            <span class="st">'Unemployment'</span>: <span class="bu">round</span>(country_data[<span class="st">'unemployment_rate'</span>].values[<span class="dv">0</span>], <span class="dv">2</span>) <span class="cf">if</span> pd.notna(country_data[<span class="st">'unemployment_rate'</span>].values[<span class="dv">0</span>]) <span class="cf">else</span> <span class="st">'N/A'</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>        })</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>summary_df <span class="op">=</span> pd.DataFrame(summary_data)</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>summary_df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div id="tbl-key-findings" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="9">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-key-findings-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;3: Key Findings Summary
+</figcaption>
+<div aria-describedby="tbl-key-findings-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-display" data-execution_count="19">
+<div>
+
+
+<table class="dataframe do-not-create-environment cell caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Country</th>
+<th data-quarto-table-cell-role="th">GDP per Capita</th>
+<th data-quarto-table-cell-role="th">Primary Enrolment</th>
+<th data-quarto-table-cell-role="th">Unemployment</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>United States</td>
+<td>76657.25</td>
+<td>96.97</td>
+<td>3.65</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>China</td>
+<td>12970.61</td>
+<td>100.10</td>
+<td>4.98</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>Japan</td>
+<td>34065.64</td>
+<td>102.16</td>
+<td>2.61</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>Germany</td>
+<td>50506.52</td>
+<td>100.22</td>
+<td>3.14</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>United Kingdom</td>
+<td>47057.04</td>
+<td>102.54</td>
+<td>3.77</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">5</th>
+<td>France</td>
+<td>40988.64</td>
+<td>102.71</td>
+<td>7.30</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">6</th>
+<td>India</td>
+<td>2347.45</td>
+<td>112.07</td>
+<td>4.82</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">7</th>
+<td>Brazil</td>
+<td>9281.33</td>
+<td>103.97</td>
+<td>9.23</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">8</th>
+<td>Canada</td>
+<td>56256.80</td>
+<td>94.74</td>
+<td>5.28</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">9</th>
+<td>Australia</td>
+<td>65169.52</td>
+<td>99.13</td>
+<td>3.73</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p><a href="#tbl-analysis-summary" class="quarto-xref">Table&nbsp;4</a> synthesises the main analytical insights from the study, highlighting distributional patterns and relationships between economic output, education, and unemployment.</p>
+<div class="cell" data-execution_count="10">
+<div id="tbl-analysis-summary" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="10">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-analysis-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;4: Summary of Key Findings from the Analysis (2022). Source: <span class="citation" data-cites="worldbank2023">The World Bank (<a href="#ref-worldbank2023" role="doc-biblioref">2023</a>)</span>.
+</figcaption>
+<div aria-describedby="tbl-analysis-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-display" data-execution_count="20">
+<div>
+
+
+<table class="dataframe do-not-create-environment cell caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Indicator</th>
+<th data-quarto-table-cell-role="th">Key Finding</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>GDP per Capita</td>
+<td>Highly right-skewed distribution; large income...</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>Primary School Enrolment</td>
+<td>Most countries cluster around high enrolment r...</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>Unemployment Rate</td>
+<td>Wide variation across countries; mean higher t...</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>GDP vs Unemployment</td>
+<td>Negative relationship: higher GDP per capita a...</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>Education vs Unemployment</td>
+<td>Weak relationship; enrolment rate does not str...</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p>Task 6 is already done in the report.</p>
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-barro1991" class="csl-entry" role="listitem">
+Barro, Robert J. 1991. <span>“Economic Growth in a Cross Section of Countries.”</span> <em>The Quarterly Journal of Economics</em> 106 (2): 407–43. <a href="https://doi.org/10.2307/2937943">https://doi.org/10.2307/2937943</a>.
+</div>
+<div id="ref-blanchard2000" class="csl-entry" role="listitem">
+Blanchard, Olivier, and Justin Wolfers. 2000. <span>“The Role of Shocks and Institutions in the Rise of European Unemployment: The Aggregate Evidence.”</span> <em>The Economic Journal</em> 110 (462): 1–33.
+</div>
+<div id="ref-psacharopoulos2004" class="csl-entry" role="listitem">
+Psacharopoulos, George, and Harry Anthony Patrinos. 2004. <span>“Returns to Investment in Education: A Further Update.”</span> <em>Education Economics</em> 12 (2): 111–34. <a href="https://doi.org/10.1080/0964529042000239140">https://doi.org/10.1080/0964529042000239140</a>.
+</div>
+<div id="ref-worldbank2023" class="csl-entry" role="listitem">
+The World Bank. 2023. <span>“World Development Indicators.”</span> <a href="https://databank.worldbank.org/source/world-development-indicators">https://databank.worldbank.org/source/world-development-indicators</a>.
+</div>
+</div></section></div></main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
