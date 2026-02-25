@@ -8,9 +8,13 @@ format:
     theme: solarized
     transition: slide
     slide-number: true
-    incremental: true
     logo: https://www.worldbank.org/content/dam/wbr/logo/logo-wb-header.svg
     footer: "Data Source: World Bank WDI 2022"
+execute:
+  echo: false
+  warning: false
+  message: false
+
 bibliography: references.bib
 ---
 
