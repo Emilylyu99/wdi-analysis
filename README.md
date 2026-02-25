@@ -6,7 +6,7 @@
 https://emilylyu99.github.io/wdi-analysis/report.html
 
 - Revealjs Presentation:
-https://emilylyu99.github.io/wdi-analysis/presentation.html
+https://emilylyu99.github.io/wdi-analysis/presentation.html#/overview
 
 ## Files Included
 
