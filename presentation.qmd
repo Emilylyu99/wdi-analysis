@@ -5,6 +5,7 @@ author: "Yang Lyu"
 date: "2026-02-23"
 format:
   revealjs:
+    embed-resources: true
     theme: solarized
     transition: slide
     slide-number: true
